@@ -1,0 +1,600 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, 
+        #001122 0%,    /* Superfície do mar - noite */
+        #003366 15%,   /* Águas rasas */
+        #004488 30%,   /* Zona fótica */
+        #0066aa 45%,   /* Zona mesopelágica */
+        #002244 60%,   /* Zona batipelágica */
+        #001133 80%,   /* Zona abissal */
+        #000011 100%   /* Zona hadal */
+    );
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #fff;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Efeito de partículas marinhas flutuantes */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 255, 255, 0.4) 1px, transparent 1px),
+        radial-gradient(circle at 80% 80%, rgba(135, 206, 250, 0.3) 2px, transparent 2px),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+        radial-gradient(circle at 90% 10%, rgba(0, 191, 255, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 30% 70%, rgba(173, 216, 230, 0.2) 1px, transparent 1px);
+    background-size: 300px 300px, 200px 200px, 150px 150px, 250px 250px, 180px 180px;
+    animation: floatParticles 25s infinite linear;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes floatParticles {
+    0% { 
+        transform: translateY(100vh) translateX(0px) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { 
+        transform: translateY(-100vh) translateX(100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Ondas animadas no fundo */
+body::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 200%; /* Para permitir o movimento translateX */
+    height: 200px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(0, 255, 255, 0.1), 
+        transparent, 
+        rgba(135, 206, 250, 0.1), 
+        transparent
+    );
+    animation: waves 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1; /* Garante que fique atrás de todo o conteúdo */
+}
+
+@keyframes waves {
+    0%, 100% { 
+        transform: translateX(-50%) translateY(0px); /* Inicia mais à esquerda para o movimento */
+        opacity: 0.3;
+    }
+    50% { 
+        transform: translateX(-25%) translateY(-20px); /* Move para a direita e um pouco para cima */
+        opacity: 0.7;
+    }
+}
+
+header {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: linear-gradient(135deg, 
+        rgba(0, 17, 34, 0.9), /* Azul escuro quase preto */
+        rgba(0, 51, 102, 0.8) /* Azul escuro médio */
+    );
+    backdrop-filter: blur(15px); /* Efeito de desfoque no fundo (suporte variado) */
+    border-bottom: 4px solid #00ffff; /* Ciano */
+    box-shadow: 
+        0 8px 32px rgba(0, 255, 255, 0.3), /* Sombra Ciano */
+        inset 0 1px 0 rgba(255, 255, 255, 0.1); /* Leve brilho interno */
+    position: relative; /* Para o ::before do shimmer */
+    overflow: hidden; /* Para conter o shimmer */
+}
+
+header::before { /* Efeito Shimmer */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Começa fora da tela à esquerda */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(0, 255, 255, 0.2), /* Faixa de brilho Ciano */
+        transparent
+    );
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; } /* Move a faixa de brilho para a direita */
+}
+
+header h1 {
+    font-family: 'Roboto Slab', serif;
+    font-size: clamp(2rem, 5vw, 3rem); /* Tamanho responsivo */
+    font-weight: 700;
+    color: #00ffff; /* Ciano */
+    text-shadow: 
+        0 0 10px rgba(0, 255, 255, 0.8),
+        0 0 20px rgba(0, 255, 255, 0.6),
+        0 0 30px rgba(0, 255, 255, 0.4);
+    margin-bottom: 0.5rem;
+    animation: glow 2s ease-in-out infinite alternate;
+    position: relative; /* Para garantir que fique acima do shimmer */
+    z-index: 1;
+}
+
+@keyframes glow {
+    from { 
+        text-shadow: 
+            0 0 10px rgba(0, 255, 255, 0.8),
+            0 0 20px rgba(0, 255, 255, 0.6),
+            0 0 30px rgba(0, 255, 255, 0.4);
+    }
+    to { 
+        text-shadow: 
+            0 0 15px rgba(0, 255, 255, 1), /* Brilho mais intenso */
+            0 0 25px rgba(0, 255, 255, 0.8),
+            0 0 35px rgba(0, 255, 255, 0.6);
+    }
+}
+
+.timeline {
+    position: relative;
+    max-width: 1400px; /* Mais largo para acomodar o design */
+    margin: 4rem auto;
+    padding: 2rem 1rem;
+}
+
+/* Linha central da timeline com efeito de corrente marinha */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    background: linear-gradient(to bottom, 
+        #00ffff 0%,    /* Ciano no topo */
+        #0080ff 25%,   /* Azul claro */
+        #0040ff 50%,   /* Azul médio */
+        #002080 75%,   /* Azul escuro */
+        #001040 100%   /* Azul muito escuro na base */
+    );
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza corretamente */
+    border-radius: 4px;
+    box-shadow: 
+        0 0 20px rgba(0, 255, 255, 0.6), /* Brilho ciano */
+        inset 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra interna */
+    animation: currentFlow 4s ease-in-out infinite;
+    z-index: 0; /* Atrás dos containers e círculos */
+}
+
+@keyframes currentFlow { /* Animação do brilho da linha */
+    0%, 100% { 
+        box-shadow: 
+            0 0 20px rgba(0, 255, 255, 0.6),
+            inset 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    50% { 
+        box-shadow: 
+            0 0 30px rgba(0, 255, 255, 0.9), /* Brilho mais intenso */
+            inset 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+}
+
+.timeline-container {
+    padding: 15px 50px; /* Espaçamento interno */
+    position: relative;
+    background-color: inherit; /* Herda o fundo do body */
+    width: 50%;
+    
+    /* --- AJUSTE PARA ANIMAÇÃO DE ENTRADA COM IntersectionObserver --- */
+    opacity: 0; /* Começa invisível */
+    transform: translateY(40px); /* Começa um pouco deslocado para baixo */
+    /* A animação 'fadeInUp' será aplicada pela classe '.is-visible' */
+    /* A 'transition' abaixo é para o efeito de hover, se houver */
+    transition: transform 0.3s ease; /* Transição para o hover scale */
+    margin-bottom: 3rem; /* Espaçamento entre os itens */
+}
+
+.timeline-container.is-visible {
+    /* Aplica a animação quando o elemento se torna visível */
+    animation: fadeInUp 0.8s ease-out forwards; /* 'forwards' mantém o estado final */
+}
+
+.timeline-container:hover {
+    transform: scale(1.02) translateY(0); /* Leve zoom no hover, mantém o Y em 0 se já animado */
+}
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px); /* Estado inicial da animação */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Estado final da animação */
+    }
+}
+
+/* Círculos bioluminescentes na linha do tempo */
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: -19px; /* (30/2 + 4px de ajuste para centralizar com a linha de 8px) */
+    background: radial-gradient(circle, 
+        #00ffff 0%,    /* Centro Ciano Brilhante */
+        #0080ff 50%,   /* Transição para Azul */
+        #004080 100%   /* Borda Azul Escura */
+    );
+    border: 5px solid #001122; /* Borda escura para simular profundidade */
+    top: 20px; /* Posição vertical */
+    border-radius: 50%; /* Círculo perfeito */
+    z-index: 2; /* Acima da linha central, abaixo do conteúdo do card se necessário */
+    box-shadow: 
+        0 0 25px rgba(0, 255, 255, 0.8), /* Brilho Ciano */
+        inset 0 0 10px rgba(255, 255, 255, 0.3); /* Brilho interno sutil */
+    animation: bioluminescence 3s infinite;
+}
+
+@keyframes bioluminescence { /* Animação de pulsação para os círculos */
+    0%, 100% { 
+        box-shadow: 
+            0 0 25px rgba(0, 255, 255, 0.8),
+            inset 0 0 10px rgba(255, 255, 255, 0.3);
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 
+            0 0 40px rgba(0, 255, 255, 1),    /* Brilho mais intenso */
+            0 0 60px rgba(0, 255, 255, 0.6), /* Brilho externo maior */
+            inset 0 0 15px rgba(255, 255, 255, 0.5);
+        transform: scale(1.1); /* Aumenta um pouco o tamanho */
+    }
+}
+
+/* Posicionamento dos containers left/right */
+.left {
+    left: 0;
+}
+
+.right {
+    left: 50%;
+}
+
+.right::after { /* Ajusta o círculo para os containers da direita */
+    left: -19px; /* Mesma lógica de 'right: -19px' mas para a esquerda */
+}
+
+/* Setas com efeito de corrente */
+.timeline-container::before { /* Estilo base da seta (para containers da direita) */
+    content: '';
+    height: 0;
+    position: absolute;
+    top: 28px; /* Alinhamento vertical com o círculo */
+    width: 0;
+    z-index: 1; /* Abaixo do círculo, mas acima da linha */
+    right: 35px; /* Distância da borda do container */
+    border: medium solid #00ffff; /* Cor Ciano */
+    border-width: 15px 0 15px 15px; /* Cria a forma de seta para a esquerda */
+    border-color: transparent transparent transparent #00ffff;
+    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.6)); /* Sombra Ciano */
+}
+
+.left::before { /* Inverte a seta para containers da esquerda */
+    left: 35px; /* Distância da borda do container */
+    right: auto; /* Remove a propriedade right */
+    border-width: 15px 15px 15px 0; /* Cria a forma de seta para a direita */
+    border-color: transparent #00ffff transparent transparent;
+}
+
+/* Cards com efeito de profundidade marinha */
+.timeline-content {
+    padding: 25px 30px;
+    background: linear-gradient(135deg, 
+        rgba(0, 51, 102, 0.9) 0%,   /* Azul escuro */
+        rgba(0, 68, 136, 0.8) 50%,  /* Azul médio */
+        rgba(0, 34, 68, 0.9) 100%   /* Azul escuro novamente */
+    );
+    position: relative;
+    border-radius: 20px; /* Bordas bem arredondadas */
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.4),           /* Sombra escura principal */
+        0 5px 15px rgba(0, 255, 255, 0.2),       /* Sombra Ciano sutil */
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);  /* Leve brilho interno no topo */
+    backdrop-filter: blur(15px); /* Efeito de vidro fosco (suporte variado) */
+    border: 2px solid rgba(0, 255, 255, 0.3); /* Borda Ciano translúcida */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transição suave para hover */
+    cursor: pointer;
+    overflow: hidden; /* Para conter o ::before do hover */
+    z-index: 1; /* Garante que o conteúdo fique acima da linha de fundo */
+}
+
+.timeline-content::before { /* Efeito de brilho sutil no hover */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        transparent 30%, 
+        rgba(0, 255, 255, 0.1) 50%, 
+        transparent 70%
+    );
+    opacity: 0; /* Começa invisível */
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* Para não interferir com o cursor no conteúdo */
+}
+
+.timeline-content:hover::before {
+    opacity: 1; /* Mostra o brilho no hover */
+}
+
+.timeline-content:hover {
+    transform: translateY(-10px) scale(1.03); /* Levanta e aumenta um pouco */
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),         /* Sombra mais pronunciada */
+        0 10px 25px rgba(0, 255, 255, 0.4),     /* Sombra Ciano mais forte */
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(0, 255, 255, 0.6); /* Borda mais brilhante no hover */
+}
+
+.timeline-content h2 {
+    font-family: 'Roboto Slab', serif;
+    color: #00ffff; /* Ciano */
+    font-size: clamp(1.5rem, 2.5vw, 1.8rem); /* Tamanho responsivo */
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    position: relative; /* Para o ::after da linha e z-index */
+    z-index: 1; /* Acima do ::before do card */
+}
+
+.timeline-content h2::after { /* Linha animada abaixo do título */
+    content: '';
+    position: absolute;
+    bottom: -8px; /* Posição abaixo do texto */
+    left: 0;
+    width: 0px; /* Começa com largura 0 para animar */
+    height: 4px;
+    background: linear-gradient(to right, #00ffff, #0080ff, transparent); /* Gradiente Ciano para Azul */
+    border-radius: 2px;
+    animation: expandLine 0.5s ease-out 0.3s forwards; /* Delay para iniciar após a entrada do card */
+}
+
+/* A animação expandLine é mais adequada se acionada quando o card está visível.
+   Se a animação fadeInText já existe, pode ser melhor acionar esta quando o card estiver hover,
+   ou remover o delay e deixar acontecer com a entrada do card.
+   Vou usar o nome 'expandLine' para evitar conflito com o seu 'expand' anterior se houver. */
+@keyframes expandLine {
+    from { width: 0; }
+    to { width: 60px; } /* Largura final da linha */
+}
+
+
+/* Layout do conteúdo (texto e imagem) */
+.content-wrapper {
+    display: flex;
+    gap: 20px; /* Espaço entre texto e imagem */
+    align-items: flex-start; /* Alinha os itens no topo */
+    position: relative; /* Para z-index */
+    z-index: 1; /* Acima do ::before do card */
+}
+
+.text-content {
+    flex: 1; /* Ocupa o espaço restante */
+    min-width: 0; /* Para evitar quebra de layout com flexbox */
+}
+
+.text-content p {
+    margin: 12px 0;
+    line-height: 1.7;
+    color: #e6f3ff; /* Cor de texto clara, quase branca */
+    font-size: clamp(0.9rem, 1.5vw, 1rem); /* Tamanho responsivo */
+    text-align: justify; /* Justifica o texto */
+    opacity: 0; /* Estado inicial para animação */
+    transform: translateY(20px); /* Estado inicial para animação */
+    /* A animação 'fadeInText' será aplicada individualmente */
+}
+
+/* Aplica a animação com delay para cada parágrafo quando o container pai (.timeline-container) se torna visível */
+.timeline-container.is-visible .text-content p {
+    animation: fadeInText 0.6s ease-out forwards;
+}
+.timeline-container.is-visible .text-content p:nth-child(1) { animation-delay: 0.4s; } /* Delay maior para sincronizar com a entrada do card */
+.timeline-container.is-visible .text-content p:nth-child(2) { animation-delay: 0.6s; }
+.timeline-container.is-visible .text-content p:nth-child(3) { animation-delay: 0.8s; }
+/* Adicione mais nth-child com delays se houver mais parágrafos */
+
+@keyframes fadeInText {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Container das imagens com o estilo bioluminescente que você criou */
+.image-container {
+    flex-shrink: 0;
+    width: 180px;
+    height: 180px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(45deg, 
+        rgba(0, 255, 255, 0.2), 
+        rgba(0, 128, 255, 0.2)
+    );
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    box-shadow: 
+        0 0 20px rgba(0, 255, 255, 0.5),
+        inset 0 0 10px rgba(255, 255, 255, 0.3);
+    animation: bioluminescence 3s infinite; /* Reutiliza a animação já definida */
+    z-index: 1; /* Para garantir o empilhamento correto com o ::before se necessário */
+}
+
+.image-container img { /* Estilo para a imagem dentro do container */
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra o container sem distorcer */
+    border-radius: inherit; /* Herda o border-radius do pai */
+    transition: transform 0.4s ease;
+}
+
+.image-container:hover img {
+    transform: scale(1.1); /* Zoom na imagem no hover do container */
+}
+
+.image-container::before { /* Overlay para o image-container */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(0, 255, 255, 0.1), /* Overlay mais sutil */
+        rgba(0, 128, 255, 0.1)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* Para não interferir com o hover na imagem */
+}
+
+.image-container:hover::before {
+    opacity: 1;
+}
+
+/* Rodapé simples */
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+    background-color: rgba(0, 17, 34, 0.8); /* Azul escuro similar ao header */
+    color: #aabbcc; /* Cor de texto acinzentada clara */
+    border-top: 2px solid #005588; /* Borda azul mais escura */
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+
+/* Media Queries para Responsividade */
+@media screen and (max-width: 900px) { /* Telas médias como tablets */
+    .timeline::after {
+        left: 40px; /* Move a linha central para a esquerda */
+        transform: translateX(0);
+    }
+
+    .timeline-container {
+        width: 100%; /* Ocupa toda a largura */
+        left: 0 !important; /* Força o alinhamento à esquerda */
+        padding-left: 80px; /* Espaço para a linha e círculo/seta */
+        padding-right: 20px;
+    }
+    .right { /* Reseta o 'left: 50%' */
+        left: 0;
+    }
+
+    .timeline-container::after { /* Círculo alinhado à nova linha */
+        left: 21px; /* (40 - 30/2 - 4) para centralizar círculo de 30px com borda de 5px na linha em 40px*/
+        right: auto;
+    }
+    .timeline-container::before { /* Seta (base para direita) */
+        left: 65px; /* Ajusta a posição da seta */
+        right: auto;
+        border-width: 12px 12px 12px 0; /* Diminui um pouco a seta */
+        border-color: transparent #00ffff transparent transparent;
+        top: 30px;
+    }
+    /* Remove a seta da direita que seria padrão para .timeline-container::before */
+    .right.timeline-container::before { 
+        /* As regras de .left::before já se aplicam a todos devido à simplificação acima,
+           mas podemos ser explícitos ou ajustar se necessário um estilo diferente para 'right' em mobile.
+           No entanto, como todos são 'left' em mobile, a regra .left::before é suficiente.
+           Para limpar, podemos garantir que não haja a seta original da direita:
+        */
+        border-left-color: transparent;
+    }
+}
+
+@media screen and (max-width: 600px) { /* Telas pequenas como smartphones */
+    body {
+        background-size: cover; /* Simplifica o gradiente de fundo */
+    }
+    header {
+        padding: 2rem 1rem;
+    }
+    header h1 {
+        font-size: clamp(1.8rem, 6vw, 2.2rem);
+    }
+
+    .timeline {
+        margin: 2rem auto;
+        padding: 1rem 0.5rem;
+    }
+    .timeline::after {
+        left: 20px; /* Linha ainda mais à esquerda */
+    }
+    .timeline-container {
+        padding-left: 55px; /* Menos padding */
+        padding-right: 10px;
+        margin-bottom: 2rem;
+    }
+    .timeline-container::after { /* Círculo */
+        left: 1px; /* (20 - 30/2 - 4) */
+        width: 24px; height: 24px; border-width: 4px; top: 22px;
+    }
+    .timeline-container::before { /* Seta */
+        left: 40px; top: 25px;
+        border-width: 10px 10px 10px 0;
+    }
+
+    .timeline-content {
+        padding: 20px;
+        border-radius: 15px;
+    }
+    .timeline-content h2 {
+        font-size: clamp(1.3rem, 4vw, 1.5rem);
+        margin-bottom: 10px;
+    }
+    .timeline-content h2::after{
+        width: 40px; height: 3px; bottom: -6px;
+    }
+
+    .content-wrapper {
+        flex-direction: column; /* Imagem abaixo do texto */
+        gap: 15px;
+    }
+    .image-container {
+        width: 100%;
+        max-width: 250px; /* Limite para a imagem não ficar enorme */
+        height: auto; /* Altura automática */
+        align-self: center; /* Centraliza a imagem */
+    }
+    .text-content p {
+        font-size: clamp(0.85rem, 2vw, 0.95rem);
+    }
+}
