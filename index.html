@@ -3,164 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Invertebrados Aquáticos</title>
-     <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <title>Expedição Abissal: Invertebrados</title>
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="cursor-light"></div>
+    <div class="bubbles-container"></div>
+
     <header>
-        <h1>A Profunda Jornada dos Invertebrados Aquáticos 🐙🌊🐚</h1>
+        <div class="header-content">
+            <img src="img/logo.png" alt="Logo" class="logo-spin">
+            <h1>EXPEDIÇÃO <span class="highlight">INVERTEBRADOS</span></h1>
+            <p>Mergulhe na evolução da vida aquática</p>
+            <div class="scroll-indicator">▼ Role para Mergulhar ▼</div>
+        </div>
     </header>
 
-    <div class="timeline">
-        <div class="timeline-container right">
-            <div class="timeline-content">
-                <h2>Ancestral Protista</h2>
-                <div class="content-wrapper">
-                    <div class="text-content">
-                        <p>Foram os primeiros seres vivos com células complexas (eucariontes).</p>
-                        <p>Alguns viviam em colônias no oceano e, com o tempo, essas colônias passaram a funcionar juntas, dando origem aos primeiros animais multicelulares.</p>
-                        <p>São os ancestrais das esponjas e de todos os outros animais.</p>
+    <main class="timeline">
+        <div class="timeline-container right" data-aos="fade-up">
+            <div class="card-3d">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/ancestral.png" alt="Ancestral Protista">
+                        <h2>Ancestral Protista</h2>
+                        <span class="click-hint">↻ Clique para analisar</span>
                     </div>
-                    <figure class="image-container">
-                        <img src="img/ancestral.png" alt="Ilustração de um Ancestral Protista">
-                    </figure>
+                    <div class="card-back">
+                        <h3>Dados do Espécime</h3>
+                        <p><strong>Tipo:</strong> Eucariontes Unicelulares/Coloniais</p>
+                        <p><strong>Descrição:</strong> Os arquitetos da vida multicelular. Suas colônias cooperativas deram origem aos primeiros animais.</p>
+                        <div class="stat-bar"><label>Complexidade:</label><div class="bar" style="width: 10%"></div></div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="timeline-container left">
-            <div class="timeline-content">
-                <h2>Poríferos (Esponjas)</h2>
-                <div class="content-wrapper">
-                    <div class="text-content">
-                        <p>Animais muito simples que vivem fixos no fundo do mar.</p>
-                        <p>O corpo tem poros por onde a água entra e sai, levando oxigênio e alimento.</p>
-                        <p>Não têm órgãos, músculos nem nervos. Alimentam-se filtrando a água com células chamadas coanócitos.</p>
+        <div class="timeline-container left" data-aos="fade-up">
+            <div class="card-3d">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/esponja.png" alt="Esponja">
+                        <h2>Poríferos</h2>
+                        <span class="click-hint">↻ Clique para analisar</span>
                     </div>
-                    <figure class="image-container">
-                        <img src="img/esponja.png" alt="Ilustração de uma Esponja Marinha">
-                    </figure>
+                    <div class="card-back">
+                        <h3>Dados do Espécime</h3>
+                        <p><strong>Habitat:</strong> Bentônicos (Fixos)</p>
+                        <p><strong>Mecanismo:</strong> Filtradores biológicos. Sem órgãos, sem cérebro, apenas eficiência pura.</p>
+                        <div class="stat-bar"><label>Complexidade:</label><div class="bar" style="width: 20%"></div></div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="timeline-container right">
-            <div class="timeline-content">
-                <h2>Cnidários (Águas-vivas, Corais, Anêmonas)</h2>
-                <div class="content-wrapper">
-                    <div class="text-content">
-                        <p>Têm corpo gelatinoso e tentáculos ao redor da boca. Usam células com veneno (cnidócitos) para capturar presas.</p>
-                        <p>Possuem uma cavidade digestiva simples e vivem tanto fixos (corais) quanto flutuando (águas-vivas).</p>
+        <div class="timeline-container right" data-aos="fade-up">
+            <div class="card-3d">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/cnidários.png" alt="Cnidários">
+                        <h2>Cnidários</h2>
+                        <span class="click-hint">↻ Clique para analisar</span>
                     </div>
-                    <figure class="image-container">
-                        <img src="img/cnidários.png" alt="Ilustração de uma Água-viva">
-                    </figure>
+                    <div class="card-back">
+                        <h3>Dados do Espécime</h3>
+                        <p><strong>Arma:</strong> Cnidócitos (Células urticantes)</p>
+                        <p><strong>Formas:</strong> Pólipo (fixo) e Medusa (livre). Predadores gelatinosos letais.</p>
+                        <div class="stat-bar"><label>Periculosidade:</label><div class="bar" style="width: 80%"></div></div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="timeline-container left">
-            <div class="timeline-content">
-                <h2>Platelmintos (Planárias, Tênias)</h2>
-                <div class="content-wrapper">
-                    <div class="text-content">
-                        <p>São vermes achatados, com simetria bilateral.</p>
-                        <p>Vivem na água doce ou como parasitas. Têm boca, mas não têm ânus.</p>
-                        <p>Possuem sistema nervoso simples e algumas espécies conseguem se regenerar.</p>
+        <div class="timeline-container left" data-aos="fade-up">
+            <div class="card-3d">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/platelmintos.png" alt="Platelmintos">
+                        <h2>Platelmintos</h2>
+                        <span class="click-hint">↻ Clique para analisar</span>
                     </div>
-                    <figure class="image-container">
-                        <img src="img/platelmintos.png" alt="Ilustração de uma Planária Aquática">
-                    </figure>
+                    <div class="card-back">
+                        <h3>Dados do Espécime</h3>
+                        <p><strong>Estrutura:</strong> Achatados (Simetria Bilateral)</p>
+                        <p><strong>Habilidade:</strong> Regeneração extrema. Corte uma planária e terá duas.</p>
+                        <div class="stat-bar"><label>Regeneração:</label><div class="bar" style="width: 100%"></div></div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="timeline-container right">
-            <div class="timeline-content">
-                <h2>Nematelmintos (Lombrigas, Nematoides)</h2>
-                <div class="content-wrapper">
-                     <div class="text-content">
-                        <p>Vermes com corpo cilíndrico e fino.</p>
-                        <p>Têm tubo digestivo completo (boca e ânus) e um revestimento protetor.</p>
-                        <p>Muitos vivem em ambientes aquáticos, mas também existem formas parasitas que atacam plantas, animais e humanos.</p>
+        <div class="timeline-container right" data-aos="fade-up">
+            <div class="card-3d">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/nematelmintos.png" alt="Nematelmintos">
+                        <h2>Nematelmintos</h2>
+                        <span class="click-hint">↻ Clique para analisar</span>
                     </div>
-                    <figure class="image-container">
-                        <img src="img/nematelmintos.png" alt="Ilustração de um Nematelminto Aquático">
-                    </figure>
+                    <div class="card-back">
+                        <h3>Dados do Espécime</h3>
+                        <p><strong>Forma:</strong> Cilíndrica e lisa</p>
+                        <p><strong>Evolução:</strong> Primeiro sistema digestório completo (boca a ânus).</p>
+                        <div class="stat-bar"><label>Resistência:</label><div class="bar" style="width: 70%"></div></div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="timeline-container left">
-            <div class="timeline-content">
-                <h2>Moluscos (Polvos, Lulas, Mariscos)</h2>
-                <div class="content-wrapper">
-                    <div class="text-content">
-                        <p>Têm corpo mole, dividido em cabeça, pé muscular e massa visceral.</p>
-                        <p>Alguns têm conchas (como mariscos), outros não (como polvos). Os polvos e lulas são inteligentes e ágeis;</p>
-                        <p>os mariscos são filtradores e vivem protegidos em conchas.</p>
+        <div class="timeline-container left" data-aos="fade-up">
+            <div class="card-3d">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/polvo.png" alt="Moluscos">
+                        <h2>Moluscos</h2>
+                        <span class="click-hint">↻ Clique para analisar</span>
                     </div>
-                    <figure class="image-container">
-                        <img src="img/polvo.png" alt="Ilustração de um Polvo">
-                    </figure>
+                    <div class="card-back">
+                        <h3>Dados do Espécime</h3>
+                        <p><strong>Diversidade:</strong> De mariscos fixos a polvos gênios.</p>
+                        <p><strong>Inteligência:</strong> Cefalópodes possuem os cérebros mais complexos dos invertebrados.</p>
+                        <div class="stat-bar"><label>Inteligência:</label><div class="bar" style="width: 95%"></div></div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="timeline-container right">
-            <div class="timeline-content">
-                <h2>Anelídeos (Minhocas Marinhas, Nereis)</h2>
-                <div class="content-wrapper">
-                    <div class="text-content">
-                        <p>Vermes com corpo segmentado em anéis.</p>
-                        <p>Têm sangue, intestino completo e se movimentam com músculos e cerdas. Algumas espécies respiram por brânquias.</p>
-                        <p>Vivem enterrados na areia ou lama do fundo do mar.</p>
+        <div class="timeline-container right" data-aos="fade-up">
+            <div class="card-3d">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/anelídeos.png" alt="Anelídeos">
+                        <h2>Anelídeos</h2>
+                        <span class="click-hint">↻ Clique para analisar</span>
                     </div>
-                   <figure class="image-container">
-                        <img src="img/anelídeos.png" alt="Ilustração de uma Nereis (Anelídeo Marinho)">
-                    </figure>
+                    <div class="card-back">
+                        <h3>Dados do Espécime</h3>
+                        <p><strong>Corpo:</strong> Segmentado (anéis)</p>
+                        <p><strong>Locomoção:</strong> Cerdas e músculos. Recicladores fundamentais do ecossistema.</p>
+                        <div class="stat-bar"><label>Mobilidade:</label><div class="bar" style="width: 50%"></div></div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="timeline-container left">
-            <div class="timeline-content">
-                <h2>Artrópodes Aquáticos (Camarões, Caranguejos)</h2>
-                <div class="content-wrapper">
-                    <div class="text-content">
-                        <p>Têm o corpo com patas articuladas e um esqueleto externo rígido (quitinoso).</p>
-                        <p>Usam brânquias para respirar e têm olhos compostos. São muito diversos e importantes para o equilíbrio ecológico e para a alimentação humana.</p>
+         <div class="timeline-container left" data-aos="fade-up">
+            <div class="card-3d">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/carangueijo.png" alt="Artrópodes">
+                        <h2>Artrópodes</h2>
+                        <span class="click-hint">↻ Clique para analisar</span>
                     </div>
-                    <figure class="image-container">
-                        <img src="img/carangueijo.png" alt="Ilustração de um Caranguejo">
-                    </figure>
+                    <div class="card-back">
+                        <h3>Dados do Espécime</h3>
+                        <p><strong>Armadura:</strong> Exoesqueleto de quitina</p>
+                        <p><strong>Dominância:</strong> O grupo animal mais numeroso e diversificado do planeta.</p>
+                        <div class="stat-bar"><label>Proteção:</label><div class="bar" style="width: 90%"></div></div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="timeline-container right">
-            <div class="timeline-content">
-                <h2>Equinodermos (Estrelas-do-mar, Ouriços)</h2>
-                <div class="content-wrapper">
-                    <div class="text-content">
-                        <p>Possuem simetria radial e um esqueleto interno feito de placas calcárias.</p>
-                        <p>Usam pés com ventosas, movidos por um sistema hidráulico, para andar e respirar.</p>
-                        <p>Vivem apenas no mar e têm grande capacidade de regeneração.</p>
+        <div class="timeline-container right" data-aos="fade-up">
+            <div class="card-3d">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/estrela.png" alt="Equinodermos">
+                        <h2>Equinodermos</h2>
+                        <span class="click-hint">↻ Clique para analisar</span>
                     </div>
-                    <figure class="image-container">
-                        <img src="img/estrela.png" alt="Ilustração de uma Estrela-do-mar">
-                    </figure>
+                    <div class="card-back">
+                        <h3>Dados do Espécime</h3>
+                        <p><strong>Sistema:</strong> Hidráulico (pés ambulacrais)</p>
+                        <p><strong>Exclusividade:</strong> Vivem apenas no mar. Primos evolutivos distantes dos vertebrados.</p>
+                        <div class="stat-bar"><label>Hidráulica:</label><div class="bar" style="width: 100%"></div></div>
+                    </div>
                 </div>
             </div>
         </div>
+    </main>
 
-    </div>
+    <section id="quiz-zone">
+        <h2>Teste de Conhecimento Abissal</h2>
+        <div id="quiz-container">
+            <div id="question-box"></div>
+            <div id="options-box"></div>
+            <div id="score-box" class="hidden"></div>
+            <button id="next-btn" class="hidden">Próxima Questão</button>
+            <button id="restart-btn" class="hidden">Reiniciar Expedição</button>
+        </div>
+    </section>
 
     <footer>
-        <p>Criado Por João Vitor , Lorena, Giovani, Luis Octavio e Mathias</p>
-        <p>&copy; <span id="currentYear"></span> Criado para fins educacionais.</p>
+        <p>Engenharia Reversa por Engenheiro de Software_Site & Equipe Original</p>
+        <p>&copy; <span id="currentYear"></span></p>
     </footer>
 
     <script src="script.js"></script>
